@@ -1,0 +1,37 @@
+{% extends "yt/base.html" %}
+% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+
+<table id="simpleTable" class="table table-striped ">
+    <thead>
+      <tr>
+        
+        <th scope="col">Channel_name</th>
+        <th scope="col">Subscribers</th>
+        <th scope="col">Channel_Link</th>
+               
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for result in results.result  %}
+  <tr>
+     
+
+    <td>{{result.id}}</td>
+  <td>{{result.title}}</td> 
+  <td><a href="https://www.youtube.com/channel/{{result.id}}">Channel</a></td>
+  
+  {% endfor %}
+
+      </tr>
+      
+    </tbody>
+  </table>
+
+
+{% endblock%}

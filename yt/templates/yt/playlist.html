@@ -1,0 +1,62 @@
+{% extends "yt/base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<style>
+  .btn {
+    width:300px;
+    padding:5px;
+}
+</style>
+<h4>List of Playlists</h4><h6>
+  <br>(Click on Playlist ID - blue button below to get the details)</h6>
+
+
+    <table id="simpleTable" class="table table-striped table-responsive ">
+      <thead>
+        <tr>
+          <th scope="col">Playlist</th>
+          <th scope="col">Playlist_id</th>
+          <th scope="col">Description</th>
+
+                    
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for list in playlist  %}
+    <tr>
+
+        <td>
+          <iframe width="150" height="150" src="https://www.youtube.com/embed/videoseries?list={{list.playlist_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+           gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </td>
+
+
+        <td>
+            <form method='GET' action="{% url 'yt:playlistdetail' %}" >
+                {% csrf_token %}
+                <input type='submit' name='playlist_id' value="{{list.playlist_id}}"  class="btn btn-primary mb-2" >
+               
+
+            </form>
+
+            </td>
+
+          <td>{{list.description}}</td> 
+    
+    {% endfor %}
+
+        </tr>
+        
+      </tbody>
+    </table>
+    </div>  
+    </div>
+
+
+
+{% endblock %}

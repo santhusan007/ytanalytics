@@ -1,0 +1,55 @@
+{% extends "yt/base.html" %}
+{% load crispy_forms_tags %}
+
+
+  
+
+{% block content %}
+
+    <h3 >Duration of the playlist : {{total_time}}</h3>
+
+      <table id="simpleTable" class="table table-striped ">
+        <thead>
+          <tr>
+            <th scope="col">Video</th>
+            <!--th scope="col">Link</th-->
+            <th scope="col">Title</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Published_date </th>
+            <th scope="col">Views</th>
+            <th scope="col">Likes</th>
+            <th scope="col">Comments</th>
+
+            
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for vid  in videos  %}
+      <tr>
+        <td><iframe width="150" height="100" src="https://www.youtube.com/embed/{{vid.link}}" 
+          title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+           allowfullscreen></iframe></td>
+          
+          
+          
+        <td>{{vid.Title}}</td>
+        <td>{{vid.Duration}}</td>
+        <td>{{vid.Published_date}}</td>
+        <td>{{vid.Views}}</td>
+        <td>{{vid.Likes }}</td>
+        <td>{{vid.Comments}}</td>
+
+      {% endfor %}
+  
+          </tr>
+          
+        </tbody>
+      </table>
+
+
+
+</div>
+
+
+{% endblock %}

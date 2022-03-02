@@ -1,0 +1,109 @@
+{% extends "yt/base.html" %}
+% load crispy_forms_tags %}
+
+<style>
+
+#btnSearch,
+#btnClear{
+    display: inline-block;
+    vertical-align: top;
+}
+</style>
+
+{% block content %}
+
+    <h2 class="text-center pt-5">Channel Summary </h2>
+
+    
+{% comment %}
+
+  
+{% for r in detail.items %}
+   ViewCount= {{r.statistics.viewCount}}
+    SubscriberCount={{r.statistics.subscriberCount}}
+    VideoCount={{r.statistics.videoCount}}
+    
+    {% endcomment %}
+
+    
+   
+
+      <h2>Total Content Duration: {{total_time}}</h2>
+
+      
+      <table id="simpleTable" class="table table-striped ">
+        <thead>
+          <tr>
+            
+            <th scope="col">Channel_name</th>
+            <th scope="col">Views </th>
+            <th scope="col">Total_videos</th>
+            <th scope="col">Subscribers</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+
+      {% for chan in channel_stats %}
+      <tr>
+
+        <td>{{chan.Channel_name}}</td>
+            <td>{{chan.Views}}</td>
+      <td>{{chan.Total_videos}}</td>
+      <td>{{chan.Subscribers}}</td>
+      {% endfor %}
+  
+          </tr>
+          
+        </tbody>
+      </table>
+
+    <h2 class="text-center pb-4">Top Videos-By Comments </h2>
+  
+
+    
+    <div class="container ">
+      <div class="row">
+        {% for vid in toptenvideo %} 
+          <div class="col col-md-3 col-sm-6 pb-4 ">
+
+
+            
+              <div class="card shadow-lg bg-white rounded">
+                  <div class="card-block ">
+                    
+                    <iframe width="247" height="150" src="https://www.youtube.com/embed/{{vid.link}}" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+             allowfullscreen></iframe>
+                    
+                    <div class="card-title text-center">
+                      <h6>{{vid.Title}}</h6>
+                    </div>
+                                        
+                    <div class="card-text pl-2">Published Date:-{{vid.Published_date}}</div>
+                      <div class="card-text pl-2">Total Views:- {{vid.Views}}</div>
+                        <div class="card-text pl-2">Likes:-{{vid.Likes}}</div>
+                          <div class="card-text pl-2">Comments:-{{vid.Comments}}</div>
+
+
+
+
+
+                    <!--a style="margin-top: 10px;" href="#" class="btn btn-success">Click here</a-->
+                  </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+            
+           
+      </div>
+     </div>
+
+
+
+      <script>
+      $('simpleTable').tablesort();
+          </script>
+    
+{% endblock %}
