@@ -10,3 +10,4 @@ length of the playlist(which youtube itself is lacking as of now) and
 
 top viewed video in a playlist etc..
 
+app is deployes at https://ytinsights.herokuapp.com/
