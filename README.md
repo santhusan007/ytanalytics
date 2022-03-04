@@ -1,6 +1,6 @@
 # ytanalytics
 
-A Django Application using YoUTUBE APi to visualize top vidoes of any youtube channel by views, comments,likes or date.
+A Django Application using YOUTUBE APi to visualize top vidoes of any youtube channel by views, comments,likes or date.
 
 Also included the feature to serch the youtube channel ID
 
